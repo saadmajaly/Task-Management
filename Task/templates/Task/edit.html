@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<style> 
+body { font-family: Arial, sans-serif; font-size: 16px; }
+
+form { margin: 20px auto; padding: 20px; width: 80%; max-width: 600px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+
+legend { font-weight: bold; font-size: 24px; color: #333; }
+
+input, textarea { display: block; width: 95%; border: 2px solid #ddd; padding: 10px; outline: none; }
+
+input:focus, textarea:focus { border-color: #66aaff; }
+
+button { display: block; margin: 10px auto; width: 200px; height: 50px; background-color: #66aaff; border: none; border-radius: 25px; color: white; font-weight: bold; cursor: pointer; }
+
+button:hover { background-color: #5599ee; } </style>
+<head>
+ <title>Edit Task</title>
+</head>
+
+<body>
+ 
+<form action="conf/" method="post">
+ {% csrf_token %}
+ <legend>Edit Your Task</legend>
+ <input id="intitle" type="text" name="title" value="{{ task.taskTitle }}" id="intitle">
+ <br>
+ <input id="indate" type="date" name="date" 
+ value="{{ task.dueDate|date:'Y-m-d' }}" id="indate">
+ <br>
+ <textarea id="indesc" name="desc" id="indesc" cols="30" rows="10">{{ task.taskDescription }}</textarea>
+ <br>
+ <button type="submit">Submit</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<style> 
+body { font-family: Arial, sans-serif; font-size: 16px; }
+
+form { margin: 20px auto; padding: 20px; width: 80%; max-width: 600px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+
+legend { font-weight: bold; font-size: 24px; color: #333; }
+
+input, textarea { display: block; width: 95%; border: 2px solid #ddd; padding: 10px; outline: none; margin-top: 1vw;}
+
+input:focus, textarea:focus { border-color: #66aaff; }
+
+button { display: block; margin: 10px auto; width: 200px; height: 50px; background-color: #66aaff; border: none; border-radius: 25px; color: white; font-weight: bold; cursor: pointer; }
+
+/* Change the background color of the button element when it is hovered */ button:hover { background-color: #5599ee; } </style>
+<head>
+ <title>Add</title>
+</head>
+<body>
+ 
+<form action="add" method="post">
+ {% csrf_token %}
+ <legend>New Task</legend>
+ <input type="text" name="title" id="intitle" placeholder="Title">
+ <br>
+ <input type="date" name="date" id="indate">
+ <br>
+ <textarea name="desc" id="indesc" cols="30" rows="10" placeholder="description"></textarea>
+ <br>
+ <button type="submit">Submit</button>
+</form>
+</body>
+</html>
