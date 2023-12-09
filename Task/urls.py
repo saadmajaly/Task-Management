@@ -1,7 +1,7 @@
 from django.urls import path,include
 from . import views
 urlpatterns = [
-    path('',views.home),
+    path('<int:sort>',views.home),
     path('addp/',views.addtemp),
     path('addp/add',views.add),
     path('edit/<int:id>/',views.edittemp,name='edit'),

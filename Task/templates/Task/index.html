@@ -1,7 +1,12 @@
 {% load static %}
 <!DOCTYPE html>
 <style>
+  *{
+    
+    font-family: Arial, Helvetica, sans-serif;
+  }
     body {
+  background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(65,58,58,1) 35%, rgba(0,212,255,1) 100%);
   margin: 20px;
   padding: 20px;
 }
@@ -35,6 +40,7 @@
 }
 /* Add some style to the task div */
 .task {
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,18 +79,58 @@
  <title>Home</title>
 </head>
 <body>
+
 <div class="addbtn">
-    <a href="addp">add task</a>
+    <a href="addp">Add Task</a>
+</div>
+<div>
+    <label for="sort">Sort By:</label>
+    <select name="sortby" id="sort" onchange="handleSorting()">
+    <option value=" ">
+      
+    </option>
+    <option value="1">
+      date:ascending
+    </option>
+    <option value="2">
+      date:descending
+    </option>
+</select>
 </div>
 {% csrf_token %}
 {% for task in tasks %}
 <div class="task">
-    <h1>{{ task.taskTitle }}</h1>
-    <h2>{{ task.dueDate }}</h2>
+    <input type="checkbox" onclick="handleClick(event)">
+    <h1 id="{{ task.id }}">{{ task.taskTitle }}</h1>
+    <h2 class="datee">{{ task.dueDate }}</h2>
+
     <p> {{ task.taskDescription }}</p>
+    
     <a class="addbtn" href="{% url 'edit' task.id %}">Edit Task</a>
     <a class="delbtn" href="{% url 'delete' task.id %}">Delete</a>
   </div>
 {% endfor %}
 </body>
+<script>
+  function handleClick(event) {
+    var title = event.target.nextElementSibling;
+    if (event.target.checked) {
+      title.style.textDecoration = "line-through";
+      title.style.fontWeight = "normal";
+      title.style.color = "#413a3a";
+    } else {
+      title.style.textDecoration = "none";
+      title.style.fontWeight = "bold";
+      title.style.color = "black";
+    }
+  }
+
+  function handleSorting()
+  {
+    var val = document.getElementById ("sort").value;
+    console.log(val);
+    window.location=val;
+  }
+  function openNav() { document.getElementById("mySidebar").style.width = "250px"; document.getElementById("main").style.marginLeft = "250px"; } function closeNav() { document.getElementById("mySidebar").style.width = "0"; document.getElementById("main").style.marginLeft= "0"; }
+</script>
 </html>
