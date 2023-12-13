@@ -1,0 +1,109 @@
+* {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(92,92,92,1) 35%, rgba(154,150,150,1) 100%);
+      margin: 20px;
+      padding: 20px;
+    }
+
+    .addbtn {
+      display: inline-block;
+      background-color: #3d8e40;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 10px;
+      margin: 1vw;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .addbtn:hover {
+      background-color: #45a049;
+    }
+
+    label {
+      margin-right: 10px;
+    }
+
+    select {
+      padding: 8px;
+      border-radius: 5px;
+    }
+
+    .task {
+      background-color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px;
+      padding: 20px;
+      border: 2px solid #e0e0e0;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+      margin-bottom: 2.5vw;
+    }
+
+    .task:hover {
+      transform: translateY(-5px);
+    }
+
+    .task h1 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333333;
+      margin-bottom: 10px;
+    }
+
+    .task h2 {
+      font-size: 18px;
+      font-style: italic;
+      color: #666666;
+    }
+
+    .task p {
+      font-size: 16px;
+      color: #999999;
+      margin-bottom: 20px;
+    }
+
+    .task input[type="checkbox"] {
+      margin-bottom: 10px;
+    }
+
+    .addbtn, .delbtn {
+      text-decoration: none;
+      font-size: 14px;
+      padding: 8px 16px;
+      margin-top: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .addbtn:hover, .delbtn:hover {
+      color: #fff;
+    }
+
+    .delbtn {
+      background-color: #ca2020;
+      color: white;
+    }
+
+    .delbtn:hover {
+      background-color: rgb(207, 14, 14);
+    }
+    
+    .addbtn a{
+      text-decoration: none;
+      color: white;
+    }
+
+    h1 span{
+      margin-right: 1vw;
+    }

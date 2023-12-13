@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <style> 
-body { font-family: Arial, sans-serif; font-size: 16px; }
+body {background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+ font-family: Arial, sans-serif; font-size: 16px; }
 
-form { margin: 20px auto; padding: 20px; width: 80%; max-width: 600px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+form {
+ background-color: white;
+ margin: 20px auto; padding: 20px; width: 80%; max-width: 600px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
 
 legend { font-weight: bold; font-size: 24px; color: #333; }
 
@@ -22,6 +25,8 @@ button { display: block; margin: 10px auto; width: 200px; height: 50px; backgrou
  {% csrf_token %}
  <legend>New Task</legend>
  <input type="text" name="title" id="intitle" placeholder="Title">
+ <br>
+ <input type="number" name="prio" id="inprio" placeholder="Task Priority">
  <br>
  <input type="date" name="date" id="indate">
  <br>

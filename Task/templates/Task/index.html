@@ -1,136 +1,39 @@
 {% load static %}
 <!DOCTYPE html>
-<style>
-  *{
-    
-    font-family: Arial, Helvetica, sans-serif;
-  }
-    body {
-  background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(65,58,58,1) 35%, rgba(0,212,255,1) 100%);
-  margin: 20px;
-  padding: 20px;
-}
-
-/* Add some style to the add task button */
-.addbtn {
-  display: inline-block;
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 10px;
-  margin: 1vw;
-}
-.addbtn a{
-    text-decoration: none;
-    color: white;
-}
-.delbtn {
-  display: inline-block;
-  background-color: #ff1d1d;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 10px;
-  margin: 1vw;
-}
-.delbtn a{
-    text-decoration: none;
-    color: white;
-}
-/* Add some style to the task div */
-.task {
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #F0F0F0;
-  margin: 10px;
-  padding: 20px;
-  border: 2px solid #E0E0E0;
-  border-radius: 20px;
-  box-shadow: 5px 5px 10px #C0C0C0;
-}
-
-/* Add some style to the task title */
-.task h1 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333333;
-}
-
-/* Add some style to the task due date */
-.task h2 {
-  font-size: 18px;
-  font-style: italic;
-  color: #666666;
-}
-
-/* Add some style to the task description */
-.task p {
-  font-size: 16px;
-  color: #999999;
-}
-
-</style>
-
+<html lang="en">
 <head>
- <title>Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <script src="{% static 'js/index.js' %}"></script>
 </head>
 <body>
-
-<div class="addbtn">
+  <div class="addbtn">
     <a href="addp">Add Task</a>
-</div>
-<div>
-    <label for="sort">Sort By:</label>
-    <select name="sortby" id="sort" onchange="handleSorting()">
-    <option value=" ">
-      
-    </option>
-    <option value="1">
-      date:ascending
-    </option>
-    <option value="2">
-      date:descending
-    </option>
-</select>
-</div>
-{% csrf_token %}
-{% for task in tasks %}
-<div class="task">
-    <input type="checkbox" onclick="handleClick(event)">
-    <h1 id="{{ task.id }}">{{ task.taskTitle }}</h1>
-    <h2 class="datee">{{ task.dueDate }}</h2>
-
-    <p> {{ task.taskDescription }}</p>
-    
-    <a class="addbtn" href="{% url 'edit' task.id %}">Edit Task</a>
-    <a class="delbtn" href="{% url 'delete' task.id %}">Delete</a>
   </div>
-{% endfor %}
-</body>
-<script>
-  function handleClick(event) {
-    var title = event.target.nextElementSibling;
-    if (event.target.checked) {
-      title.style.textDecoration = "line-through";
-      title.style.fontWeight = "normal";
-      title.style.color = "#413a3a";
-    } else {
-      title.style.textDecoration = "none";
-      title.style.fontWeight = "bold";
-      title.style.color = "black";
-    }
-  }
 
-  function handleSorting()
-  {
-    var val = document.getElementById ("sort").value;
-    console.log(val);
-    window.location=val;
-  }
-  function openNav() { document.getElementById("mySidebar").style.width = "250px"; document.getElementById("main").style.marginLeft = "250px"; } function closeNav() { document.getElementById("mySidebar").style.width = "0"; document.getElementById("main").style.marginLeft= "0"; }
-</script>
+  <label for="sort">Sort By:</label>
+  <select name="sortby" id="sort" onchange="handleSorting()">
+    <option value=" "></option>
+    <option value="0">Priority: Ascending</option>
+    <option value="5">Priority: Descending</option>
+    <option value="1">Date: Ascending</option>
+    <option value="2">Date: Descending</option>
+    <option value="3">Title: Ascending</option>
+    <option value="4">Title: Descending</option>
+  </select>
+
+  {% csrf_token %}
+  {% for task in tasks %}
+    <div class="task">
+      <input type="checkbox" onclick="handleClick(event)">
+      <h1 id="{{ task.id }}"><span>{{ task.taskPriority }} </span> {{ task.taskTitle }}</h1>
+      <h2 class="datee">{{ task.dueDate }}</h2>
+      <p>{{ task.taskDescription }}</p>
+      <a class="addbtn" href="{% url 'edit' task.id %}">Edit Task</a>
+      <a class="delbtn" href="{% url 'delete' task.id %}">Delete</a>
+    </div>
+  {% endfor %}
+</body>
 </html>

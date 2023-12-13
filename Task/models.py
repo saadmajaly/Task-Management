@@ -5,3 +5,4 @@ class Task(models.Model):
  taskTitle=models.CharField(max_length=50)
  dueDate=models.DateField()
  taskDescription=models.TextField(max_length=250)
+ taskPriority=models.IntegerField(default=0)
