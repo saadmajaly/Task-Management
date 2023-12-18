@@ -5,6 +5,9 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
+def Default_Redirect(request):
+    
+    return redirect("/0")
 def home(request,sort):
     if(sort==0):
         tasks=Task.objects.all().order_by('taskPriority','dueDate')
@@ -40,6 +43,7 @@ def edittemp(request,id):
 def edit(request,id):
     edtask=Task.objects.get(id=id)
     edtask.taskTitle=request.POST["title"]
+    edtask.taskPriority=request.POST["prio"]
     edtask.dueDate=request.POST["date"]
     edtask.taskDescription=request.POST["desc"]
     edtask.save()

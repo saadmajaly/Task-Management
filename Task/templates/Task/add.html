@@ -1,22 +1,8 @@
+{% load static %}
 <!DOCTYPE html>
-<style> 
-body {background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
- font-family: Arial, sans-serif; font-size: 16px; }
 
-form {
- background-color: white;
- margin: 20px auto; padding: 20px; width: 80%; max-width: 600px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-
-legend { font-weight: bold; font-size: 24px; color: #333; }
-
-input, textarea { display: block; width: 95%; border: 2px solid #ddd; padding: 10px; outline: none; margin-top: 1vw;}
-
-input:focus, textarea:focus { border-color: #66aaff; }
-
-button { display: block; margin: 10px auto; width: 200px; height: 50px; background-color: #66aaff; border: none; border-radius: 25px; color: white; font-weight: bold; cursor: pointer; }
-
-/* Change the background color of the button element when it is hovered */ button:hover { background-color: #5599ee; } </style>
 <head>
+ <link rel="stylesheet" href=" {% static 'css/add.css' %} ">
  <title>Add</title>
 </head>
 <body>

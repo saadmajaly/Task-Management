@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="{% static 'signin.css' %}">
+</head>
+<body>
+  <!-- Create the form element -->
+  <form action="/login" method="post">
+    <!-- Create the input element for the username -->
+    <input type="text" name="username" placeholder="Enter your username" required>
+    <!-- Create the input element for the password -->
+    <input type="password" name="password" placeholder="Enter your password" required>
+    <!-- Create the button element to submit the form -->
+    <button type="submit">Sign in</button>
+    <!-- Create the checkbox element to remember the user -->
+    <input type="checkbox" name="remember" checked>
+    <!-- Create the label element for the checkbox -->
+    <label for="remember">Remember me</label>
+    <!-- Create the link element to reset the password -->
+    <a href="/reset">Forgot your password?</a>
+    <!-- Create the link element to sign up -->
+    <a href="/signup">Don't have an account? Sign up</a>
+  </form>
+</body>
+</html>

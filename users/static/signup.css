@@ -1,0 +1,89 @@
+/* Style the body element */
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("bg.jpg"); /* A background image */
+      background-size: cover; /* Cover the entire screen */
+      height: 100vh; /* Full height */
+      margin: 0; /* Remove default margin */
+    }
+
+    /* Style the form element */
+    form {
+      width: 300px;
+      margin: 100px auto;
+      background-color: rgba(255, 255, 255, 0.8); /* A semi-transparent white background */
+      padding: 20px;
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* A subtle shadow */
+    }
+
+    /* Style the input elements */
+    input {
+      display: block;
+      width: 100%;
+      height: 40px;
+      margin-bottom: 10px;
+      border: none;
+      outline: none;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    /* Style the input icons */
+    input::before {
+      content: "\f007"; /* Font Awesome user icon */
+      font-family: "Font Awesome 5 Free"; /* Font Awesome font */
+      font-weight: 900; /* Solid style */
+      color: #555; /* Gray color */
+      margin-right: 10px; /* Space between icon and text */
+    }
+
+    input[type=password]::before {
+      content: "\f023"; /* Font Awesome lock icon */
+    }
+
+    /* Style the button element */
+    button {
+      display: block;
+      width: 100%;
+      height: 40px;
+      background-color: #2196F3; /* A blue color */
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    /* Style the button element on hover */
+    button:hover {
+      background-color: #0c7cd5; /* A darker blue color */
+    }
+
+    /* Style the checkbox element */
+    input[type=checkbox] {
+      display: inline-block;
+      width: auto;
+      height: auto;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    /* Style the label element */
+    label {
+      display: inline-block;
+      font-size: 14px;
+      vertical-align: middle;
+    }
+
+    /* Style the link elements */
+    a {
+      display: block;
+      font-size: 14px;
+      color: #2196F3; /* A blue color */
+      text-decoration: none;
+    }
+
+    /* Style the link elements on hover */
+    a:hover {
+      text-decoration: underline;
+    }

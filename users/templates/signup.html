@@ -1,0 +1,31 @@
+{% load  static  %}
+
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" href="{%static 'signup.css'%}">
+</head>
+<body>
+  
+  <!-- Create the form element -->
+  <form action="/signup/create/" method="post">
+   {% csrf_token %}
+    <!-- Create the input element for the first name -->
+    <input type="text" name="username" placeholder="Enter your username" required>
+    <!-- Create the input element for the email -->
+    <input type="email" name="email" placeholder="Enter your email address" required>
+    <!-- Create the input element for the password -->
+    <input type="password" name="password" placeholder="Enter your password" required>
+    <!-- Create the input element for the password confirmation -->
+    <input type="password" name="password_confirmation" placeholder="Confirm your password" required>
+    <!-- Create the checkbox element to agree to the terms and privacy policy -->
+    <input type="checkbox" name="agree" required>
+    <!-- Create the label element for the checkbox -->
+    <label for="agree">I agree to the <a href="/terms" style="display:inline">terms</a> and <a href="/privacy" style="display:inline">privacy policy</a></label>
+    <!-- Create the button element to submit the form -->
+    <button type="submit">Sign up</button>
+    <!-- Create the link element to sign in -->
+    <a href="/signin">Already have an account? Sign in</a>
+  </form>
+</body>
+</html>
