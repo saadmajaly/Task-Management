@@ -15,7 +15,7 @@
 <div class="logoutbtn" style="display: inline-block; background-color: #ca2020; color: white; padding: 10px 20px; text-decoration: none; border-radius: 10px; margin: 1vw; transition: background-color 0.3s ease-in-out;">
   <a href="/logout/" style="text-decoration: none; color:white">Logout</a>
 </div>
-
+    <br>
     <label for="sort">Sort By:</label>
   <select name="sortby" id="sort" onchange="handleSorting()">
     <option value=" "></option>
@@ -38,6 +38,15 @@
       <a class="delbtn" href="{% url 'delete' task.id %}">Delete</a>
     </div>
   {% endfor %}
+  <h1>
+    Contact the developer
+  </h1>
+  <a href="https://www.linkedin.com/in/saedalmajaly/">
+    <img style="width:8vw;" src="{% static 'img/linkedin.png' %}">
+  </a>
+  <a href="mailto:smajaly01@gmail.com">
+    <img style="width:8vw;height: 8vw;" src="{% static 'img/email.jpg' %}">
+  </a>
 
 </body>
 </html>
