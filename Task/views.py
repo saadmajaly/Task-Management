@@ -7,20 +7,25 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 def Default_Redirect(request):
     
-    return redirect("/0")
+    return redirect("/tasks/0")
 def home(request,sort):
+    if request.user.is_authenticated:
+        userId=request.user.id
+    else:
+        return render(request, 'login.html',{'loginerror':'Please login first'})
+    
     if(sort==0):
-        tasks=Task.objects.all().order_by('taskPriority','dueDate')
+        tasks=Task.objects.filter(user=userId).order_by('taskPriority','dueDate')
     if(sort==5):
-        tasks=Task.objects.all().order_by('-taskPriority','dueDate')
+        tasks=Task.objects.filter(user=userId).order_by('-taskPriority','dueDate')
     if(sort==1):
-        tasks=Task.objects.all().order_by('dueDate')
+        tasks=Task.objects.filter(user=userId).order_by('dueDate')
     if(sort==2):
-        tasks=Task.objects.all().order_by('-dueDate')
+        tasks=Task.objects.filter(user=userId).order_by('-dueDate')
     if(sort==3):
-        tasks=Task.objects.all().order_by('taskTitle')
+        tasks=Task.objects.filter(user=userId).order_by('taskTitle')
     if(sort==4):
-        tasks=Task.objects.all().order_by('-taskTitle')
+        tasks=Task.objects.filter(user=userId).order_by('-taskTitle')
     return render(request,"Task/index.html",{"tasks":tasks})
 def addtemp(request):
     
@@ -32,9 +37,10 @@ def add(request):
     date=request.POST["date"]
     description=request.POST["desc"]
     priority=request.POST["prio"]
-    task = Task(taskTitle=title,dueDate=date,taskDescription=description,taskPriority=priority)
+    user=request.user
+    task = Task(taskTitle=title,dueDate=date,taskDescription=description,taskPriority=priority,user=user)
     task.save()
-    return redirect("/0")
+    return redirect("/tasks/0")
 
 def edittemp(request,id):
     edtask=Task.objects.get(id=id)
@@ -47,9 +53,9 @@ def edit(request,id):
     edtask.dueDate=request.POST["date"]
     edtask.taskDescription=request.POST["desc"]
     edtask.save()
-    return redirect("/0")
+    return redirect("/tasks/0")
 
 def deleteT(request,id):
     delTask=Task.objects.get(id=id)
     delTask.delete()
-    return redirect("/0")
+    return redirect("/tasks/0")

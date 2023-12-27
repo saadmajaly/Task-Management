@@ -107,3 +107,18 @@
     h1 span{
       margin-right: 1vw;
     }
+
+    .logoutbtn {
+  display: inline-block;
+  background-color: #ca2020; /* Red background */
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 10px;
+  margin: 1vw;
+  transition: background-color 0.3s ease-in-out;
+}
+
+    .logoutbtn:hover {
+  background-color: #9b0000; /* Darker red on hover */
+}

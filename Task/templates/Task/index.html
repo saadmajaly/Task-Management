@@ -12,8 +12,11 @@
   <div class="addbtn">
     <a href="addp">Add Task</a>
   </div>
+<div class="logoutbtn" style="display: inline-block; background-color: #ca2020; color: white; padding: 10px 20px; text-decoration: none; border-radius: 10px; margin: 1vw; transition: background-color 0.3s ease-in-out;">
+  <a href="/logout/" style="text-decoration: none; color:white">Logout</a>
+</div>
 
-  <label for="sort">Sort By:</label>
+    <label for="sort">Sort By:</label>
   <select name="sortby" id="sort" onchange="handleSorting()">
     <option value=" "></option>
     <option value="0">Priority: Ascending</option>
@@ -35,5 +38,6 @@
       <a class="delbtn" href="{% url 'delete' task.id %}">Delete</a>
     </div>
   {% endfor %}
+
 </body>
 </html>
