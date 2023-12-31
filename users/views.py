@@ -6,20 +6,21 @@ from django.contrib.auth import login as loguser
 from django.contrib.auth import logout as logouser
 
 # Create your views here.
-def login(request):
- 
- return render(request, 'login.html')
+def login(request,ermsg=""):
+ if(len(ermsg)>0):
+   return render(request, 'login.html',{'loginerror':'Invalid login credentials'})
+ return render(request, 'login.html')          
 
 def auth(request):
- usern=request.POST["username"]
- passw=request.POST["password"]
+ usern=request.POST.get("username")
+ passw=request.POST.get("password")
  
  user=authenticate(request,username=usern,password=passw)
  if user is not None:
-   loguser(request,user)
-   return redirect("/tasks")
+  loguser(request,user)
+  return redirect("/tasks/")
  else:
-  return render(request, 'login.html',{'loginerror':'Invalid login credentials'})
+  return redirect("/erlog/ermsg='the login credentials are wrong'")
 
 def userNameUni(username):
  try:
