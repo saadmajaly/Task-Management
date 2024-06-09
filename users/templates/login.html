@@ -8,19 +8,15 @@
   <form action="auth/" method="post">
     {% csrf_token %}
 
+    <label for="username" style="margin-bottom: 10px;">Username</label>
     <input type="text" name="username" placeholder="Enter your username" required>
     
+    <label for="password" style="margin-bottom: 10px;">Password</label>
     <input type="password" name="password" placeholder="Enter your password" required>
     
-    <button type="submit">Sign in</button>
+    <button type="submit" style="margin-top:20px; border-radius: 8px;">Sign in</button>
     
-    <input type="checkbox" name="remember" checked>
-    
-    <label for="remember">Remember me</label>
-    
-    <a href="/reset">Forgot your password?</a>
-    
-    <a href="/signup">Don't have an account? Sign up</a>
+    <a href="/signup" style="margin-top: 10px;">Don't have an account? Sign up</a>
   </form>
   <p style="background-color:red;">
     {{ loginerror }}

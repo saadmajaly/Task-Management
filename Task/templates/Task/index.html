@@ -1,20 +1,20 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Task Manager</title>
-  <link rel="stylesheet" href="{% static 'css/index.css' %}">
-  <script src="{% static 'js/index.js' %}"></script>
-</head>
-<body>
-  <div class="addbtn">
+{% block content %}
+<div class="align-items-center">
+  <div class="btn btn-primary m-2">
     <a href="addp">Add Task</a>
   </div>
-<div class="logoutbtn" style="display: inline-block; background-color: #ca2020; color: white; padding: 10px 20px; text-decoration: none; border-radius: 10px; margin: 1vw; transition: background-color 0.3s ease-in-out;">
-  <a href="/logout/" style="text-decoration: none; color:white">Logout</a>
+<div class="btn btn-danger m-2">
+  <a href="/logout/">Logout</a>
 </div>
+<script>
+      function handleSorting() {
+      var val = document.getElementById("sort").value;
+      console.log(val);
+      window.location = val;
+    }
+</script>
     <br>
     <label for="sort">Sort By:</label>
   <select name="sortby" id="sort" onchange="handleSorting()">
@@ -28,25 +28,43 @@
   </select>
 
   {% csrf_token %}
-  {% for task in tasks %}
-    <div class="task">
-      <input type="checkbox" onclick="handleClick(event)">
-      <h1 id="{{ task.id }}"><span>{{ task.taskPriority }} </span> {{ task.taskTitle }}</h1>
-      <h2 class="datee">{{ task.dueDate }}</h2>
-      <p>{{ task.taskDescription }}</p>
-      <a class="addbtn" href="{% url 'edit' task.id %}">Edit Task</a>
-      <a class="delbtn" href="{% url 'delete' task.id %}">Delete</a>
-    </div>
-  {% endfor %}
+  <div class="row"> <!-- Ensure this row wraps all task containers -->
+    {% for task in tasks %}
+      <div class="col-md-3 m-2"> <!-- Use col-md-3 for 4 tasks per row -->
+        <div class="container-md border border-3 m-2 mt-4"> 
+          <div class="row align-items-center">
+            <div class="col-9 fs-2 text-break">
+              {{task.taskTitle}}
+            </div>
+            <div class="col-3">
+              <a href="{% url 'delete' task.id %}" class="btn btn-danger">Delete</a>
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-9 fs-5 text-break">
+              {{task.taskDescription}}
+            </div>
+            <div class="col-3">
+              <a href="{% url 'edit' task.id %}" class="btn btn-primary">Edit</a>
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-md-8 fs-5">
+              {{task.dueDate}}
+            </div>
+            <div class="col-md-3 fs-4">
+              Priority:{{task.taskPriority}}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
   <h1>
     Contact the developer
   </h1>
-  <a href="https://www.linkedin.com/in/saedalmajaly/" target="_blank">
-    <img style="width:8vw;" src="{% static 'img/linkedin.png' %}">
+  <a href="https://www.linkedin.com/in/saedalmajaly/" target="_blank" class="m-2" style="width:5vw;height: 5vw;">
+    <img style="width:5vw;height: 5vw;" src="{% static 'img/linkedin.png' %}">
   </a>
-  <a href="mailto:smajaly01@gmail.com" target="_blank">
-    <img style="width:8vw;height: 8vw;" src="{% static 'img/email.jpg' %}">
-  </a>
-
-</body>
-</html>
+</div>
+{% endblock content %}

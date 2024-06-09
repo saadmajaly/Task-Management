@@ -1,24 +1,18 @@
-{% load static %}
-<!DOCTYPE html>
-
-<head>
- <link rel="stylesheet" href=" {% static 'css/add.css' %} ">
- <title>Add</title>
-</head>
-<body>
+{% extends "base.html" %}
  
-<form action="add" method="post">
+{% block content %}
+<form action="add" method="post" class="p-2 col-7 m-3 align-items-center">
  {% csrf_token %}
  <legend>New Task</legend>
- <input type="text" name="title" id="intitle" placeholder="Title">
+ <input type="text" name="title" id="intitle" placeholder="Title" class="form-control">
  <br>
- <input type="number" name="prio" id="inprio" placeholder="Task Priority">
+ <input type="number" name="prio" id="inprio" placeholder="Task Priority" class="form-control">
  <br>
- <input type="date" name="date" id="indate">
+ <input type="date" name="date" id="indate" class="form-control">
  <br>
- <textarea name="desc" id="indesc" cols="30" rows="10" placeholder="description"></textarea>
+ <textarea name="desc" id="indesc" cols="30" rows="10" placeholder="description" class="form-control"></textarea>
  <br>
- <button type="submit">Submit</button>
+ <button type="submit" class="btn btn-primary">Save</button>
+ <a href="{% url 'home' %}" class="btn btn-danger ms-3">Cancel</a>
 </form>
-</body>
-</html>
+{% endblock content %}

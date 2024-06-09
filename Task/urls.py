@@ -1,7 +1,7 @@
 from django.urls import path,include
 from . import views
 urlpatterns = [
-    path('',views.Default_Redirect),
+    path('',views.Default_Redirect,name="home"),
     path('<int:sort>',views.home),
     path('addp/',views.addtemp),
     path('addp/add',views.add),

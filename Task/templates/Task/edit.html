@@ -1,25 +1,19 @@
-{% load static %}
-<!DOCTYPE html>
-<head>
- <title>Edit Task</title>
- <link rel="stylesheet" href="{% static 'css/edit.css' %}">
-</head>
+{% extends "base.html" %}
 
-<body>
- 
-<form action="conf/" method="post">
+{% block content %}
+<form action="conf/" method="post" class="p-2 col-7 m-3 align-items-center">
  {% csrf_token %}
  <legend>Edit Your Task</legend>
- <input id="intitle" type="text" name="title" value="{{ task.taskTitle }}" id="intitle">
+ <input id="intitle" type="text" name="title" value="{{ task.taskTitle }}" id="intitle" class="form-control">
  <br>
- <input type="number" name="prio" id="inprio" placeholder="Task Priority" value="{{ task.taskPriority }}">
+ <input type="number" name="prio" id="inprio" placeholder="Task Priority" value="{{ task.taskPriority }}" class="form-control">
  <br>
  <input id="indate" type="date" name="date" 
- value="{{ task.dueDate|date:'Y-m-d' }}" id="indate">
+ value="{{ task.dueDate|date:'Y-m-d' }}" id="indate" class="form-control">
  <br>
- <textarea id="indesc" name="desc" id="indesc" cols="30" rows="10">{{ task.taskDescription }}</textarea>
+ <textarea id="indesc" name="desc" id="indesc" cols="30" rows="10" class="form-control">{{ task.taskDescription }}</textarea>
  <br>
- <button type="submit">Submit</button>
+ <button type="submit" class="btn btn-primary">Save</button>
+ <a href="{% url 'home' %}" class="btn btn-danger ms-3">Cancel</a>
 </form>
-</body>
-</html>
+{% endblock content %}

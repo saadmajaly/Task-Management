@@ -1,6 +1,6 @@
 body {
       font-family: Arial, sans-serif;
-      background-color:black;
+      background-color:#222831 ;
       height: 100vh; /* Full height */
       margin: 0; /* Remove default margin */
     }
@@ -9,22 +9,25 @@ body {
     form {
       width: 300px;
       margin: 100px auto;
-      background-color: rgba(255, 255, 255, 0.8); /* A semi-transparent white background */
+      background-color: transparent; /* A semi-transparent white background */
       padding: 20px;
       border-radius: 10px; /* Rounded corners */
       box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* A subtle shadow */
+      color: white;
     }
 
     /* Style the input elements */
     input {
       display: block;
       width: 93%;
-      height: 40px;
+      height: auto;
       margin-bottom: 10px;
       border: none;
       outline: none;
       padding: 10px;
       font-size: 16px;
+      background-color: #333333;
+      color:white;
     }
 
     /* Style the input icons */
@@ -45,7 +48,7 @@ body {
       display: block;
       width: 100%;
       height: 40px;
-      background-color: #2196F3; /* A blue color */
+      background-color: #2F80ED; /* A blue color */
       color: white;
       border: none;
       cursor: pointer;
