@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ {% comment %} <link rel="stylesheet" href="{% static 'signin.css' %}"> {% endcomment %}
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+ <title>{% block title %} Login {% endblock title %}</title>
+ <link rel="icon" type="image/png" href="{% static 'img/logo.jpeg' %}">
+</head>
+<body class="bg-light">
+  {% block content %}
+   
+  {% endblock content %}
+</body>
+</html>

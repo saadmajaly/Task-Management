@@ -1,7 +1,6 @@
 body {
       font-family: Arial, sans-serif;
-      background-color:#222831 ;
-      height: 100vh; /* Full height */
+      background-color:#FFFFFF ;
       margin: 0; /* Remove default margin */
     }
 
@@ -22,12 +21,13 @@ body {
       width: 93%;
       height: auto;
       margin-bottom: 10px;
-      border: none;
+      border-radius: 5px; /* Rounded corners */
+      border: 1px solid #ccc; /* A light gray border */
       outline: none;
       padding: 10px;
       font-size: 16px;
-      background-color: #333333;
-      color:white;
+      background-color: white;
+      color:black;
     }
 
     /* Style the input icons */
@@ -74,6 +74,7 @@ body {
       display: inline-block;
       font-size: 14px;
       vertical-align: middle;
+      color: #000000;
     }
 
     /* Style the link elements */

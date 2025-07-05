@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+  <div class="align-items-center d-flex">
+    <div class="btn btn-primary m-2">
+      <a href="addp">Add Task</a>
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Sort by:
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="0">Priority: Ascending</a></li>
+        <li><a class="dropdown-item" href="5">Priority: Descending</a></li>
+        <li><a class="dropdown-item" href="1">Date: Ascending</a></li>
+        <li><a class="dropdown-item" href="2">Date: Descending</a></li>
+        <li><a class="dropdown-item" href="3">Title: Ascending</a></li>
+        <li><a class="dropdown-item" href="4">Title: Descending</a></li>
+      </ul>
+    </div>
+</div>
+</div>
+
+<script>
+      function handleSorting() {
+      var val = document.getElementById("sort").value;
+      console.log(val);
+      window.location = val;
+    }
+</script>
+    <br>
+
+  {% csrf_token %}
+  <div class="row"> <!-- Ensure this row wraps all task containers -->
+    {% for task in tasks %}
+      <div class="col-md-4 m-2"> <!-- Use col-md-3 for 4 tasks per row -->
+        <div class="container-md border border-3 m-2 mt-4 rounded"> 
+          <div class="row align-items-center">
+            <div class="fs-2 text-start d-inline-block col-9">
+              {{task.taskTitle}}
+            </div>
+            <div class="text-end d-inline-block col-3 p-2 align-bottom">
+                {% if task.taskPriority == 1 %}
+                <p class="badge text-bg-secondary fs-6">
+                Low
+                </p>
+                {% elif task.taskPriority == 2 %}
+                <p class="badge text-bg-warning fs-6">
+                Medium
+                </p>
+                {% elif task.taskPriority == 3 %}
+                <p class="badge text-bg-danger fs-6">
+                High
+                </p>
+                {% endif %}
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-md-8 fs-5">
+              {{task.dueDate}}
+            </div>
+            <div class="col-md-4 text-end">
+              <a href="edit/{{task.id}}"><img src="{% static 'img/editIcon.png' %}" class="col-md-3"></a>
+              <div class="vr"></div>
+              <a href="delete/{{task.id}}"><img src="{% static 'img/deleteIcon.png' %}" class="col-md-2"></a>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <h1>
+    Contact the developer
+  </h1>
+  <a href="https://www.linkedin.com/in/saedalmajaly/" target="_blank" class="m-2" style="width:2vw !important; height: 2vw !important;">
+    <img style="width:5vw;height: 5vw;" src="{% static 'img/linkedin.png' %}">
+  </a>
+</div>
+{% endblock content %}
