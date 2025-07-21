@@ -1,7 +1,7 @@
 <h1> screenshots from the project UI</h1>
 <h2>Log In page:</h2>
+<img width="1919" height="872" alt="image" src="https://github.com/user-attachments/assets/36f79dec-ba5b-4570-8b86-a1c7f77b2772" />
 
-![Screenshot (470)](https://github.com/saadmajaly/Task-Management/assets/119158256/e2dfb045-e1be-4185-a8c0-81ab7a58dbc5)
 <h2>Sign Up page:</h2>
 
 ![Screenshot (471)](https://github.com/saadmajaly/Task-Management/assets/119158256/d1c8b88d-e37f-4fc7-a685-a36db75b32a6)
